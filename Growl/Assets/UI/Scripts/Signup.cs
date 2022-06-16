@@ -28,10 +28,22 @@ public class Signup : Popup
     [SerializeField]
     private TMP_InputField NickInput;
 
-    public void Accept_Click()
+    public void ID_Duplicate_Check()
+    {
+
+    }
+    public void Nick_Duplicate_Check()
+    {
+
+    }
+    public void _Submit()
     {
         if (IDInput.text == "AAA")
             Debug.Log("¤·¤·¤·");
+    }
+    public void _Reset()
+    {
+        
     }
     public void Input_IME_Auto()
     {
