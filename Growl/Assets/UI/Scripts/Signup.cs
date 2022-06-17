@@ -9,6 +9,12 @@ using System.Text.RegularExpressions;
 
 public class Signup : Popup
 {
+    private bool ID_Duplicate = false;
+    private string ID_Duplicated = string.Empty;
+    private bool Nick_Duplicate = false;
+    private string Nick_Duplicated = string.Empty;
+    private bool PW_Complicated = false;
+
     [SerializeField]
     private Button Accept;
     [SerializeField]
@@ -27,18 +33,44 @@ public class Signup : Popup
     private TMP_InputField PWReInput;
     [SerializeField]
     private TMP_InputField NickInput;
+    [SerializeField]
+    private Image IDDupCheckMark;
+    [SerializeField]
+    private Image NickDupCheckMark;
 
     public void ID_Duplicate_Check()
     {
-
+        if (true)   //TODO
+        {
+            ID_Duplicate = true;
+            ID_Duplicated = IDInput.text;
+            IDDupCheckMark.enabled = true;
+        }
+        else
+        {
+            ID_Duplicate = false;
+            ID_Duplicated = string.Empty;
+            IDDupCheckMark.enabled = false;
+        }
     }
     public void Nick_Duplicate_Check()
     {
-
+        if (true)   //TODO
+        {
+            Nick_Duplicate = true;
+            Nick_Duplicated = NickInput.text;
+            NickDupCheckMark.enabled = true;
+        }
+        else
+        {
+            Nick_Duplicate = false;
+            Nick_Duplicated = string.Empty;
+            NickDupCheckMark.enabled = false;
+        }
     }
     public void _Submit()
     {
-        if (IDInput.text == "AAA")
+        if(ID_Duplicate && Nick_Duplicate && PW_Complicated)
             Debug.Log("¤·¤·¤·");
     }
     public void _Reset()
@@ -59,6 +91,9 @@ public class Signup : Popup
         PWInput.onValueChanged.AddListener((word) => PWInput.text = Regex.Replace(word, " ", ""));
         PWReInput.onValueChanged.AddListener((word) => PWReInput.text = Regex.Replace(word, " ", ""));
         NickInput.onValueChanged.AddListener((word) => NickInput.text = Regex.Replace(word, @"[^a-zA-Z0-9°¡-ÆR]", ""));
+
+        IDDupCheckMark.enabled = false;
+        NickDupCheckMark.enabled = false;
     }
 
 }
